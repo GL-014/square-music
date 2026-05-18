@@ -20,6 +20,29 @@
   --radius:12px;--radius-sm:8px;--radius-xs:5px;
   --sidebar:220px;
 }
+
+/* ── TEMA CLARO ── */
+body.light{
+  --bg:#f4f4f8;--bg2:#ffffff;--bg3:#f0f0f5;--bg4:#e8e8f0;
+  --border:#e0e0ea;--border2:#d0d0e0;
+  --text:#111118;--text2:#444460;--text3:#888899;
+  --accent:#ff5f3f;--accent2:#e04020;--accent-soft:#ff5f3f18;
+  --teal:#00a896;--teal-soft:#00a89618;
+  --gold:#d4a010;--gold-soft:#d4a01018;
+  --success:#1a9e5a;--success-bg:#e8f8f0;
+}
+body.light .auth-left{background:linear-gradient(135deg,#1a0d2e,#0d1a2e)}
+body.light .hero-banner{background:linear-gradient(135deg,#e8e0f8,#e0eaf8,#f8e0e8)}
+body.light .sidebar{background:#ffffff;border-color:var(--border)}
+body.light .topbar{background:rgba(244,244,248,.92)}
+body.light .player-bar{background:rgba(255,255,255,.95)}
+body.light .beat-card{background:#ffffff}
+body.light .rank-item{background:#ffffff}
+body.light .artist-card{background:#ffffff}
+body.light .comment-card{background:#ffffff}
+body.light .filter-bar{background:#ffffff}
+body.light .modal{background:#ffffff}
+body.light .toast{background:#ffffff}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
@@ -733,7 +756,7 @@ function renderTopbar(){
     </div>
     <div class="topbar-right">
       <div class="search-wrap"><i class="ti ti-search"></i><input class="search-input" placeholder="Buscar beats, artistas..." oninput="handleSearch(this.value)"/></div>
-      <button class="btn btn-icon" onclick="toggleTheme()" title="Tema"><i class="ti ti-sun"></i></button>
+      <button class="btn btn-icon" onclick="toggleTheme()" title="Tema" id="theme-btn"><i class="ti ti-sun"></i></button>
     </div>`;
 }
 
@@ -1438,7 +1461,7 @@ function closeSidebar(){document.getElementById('sidebar').classList.remove('ope
 // ── THEME ─────────────────────────────────────────────────
 let lightMode=localStorage.getItem('light')==='1';
 function applyTheme(){document.body.classList.toggle('light',lightMode);}
-function toggleTheme(){lightMode=!lightMode;localStorage.setItem('light',lightMode?'1':'0');applyTheme();}
+function toggleTheme(){lightMode=!lightMode;localStorage.setItem('light',lightMode?'1':'0');applyTheme();const btn=document.getElementById('theme-btn');if(btn)btn.innerHTML=lightMode?'<i class="ti ti-moon"></i>':'<i class="ti ti-sun"></i>';}
 applyTheme();
 
 // ── BOOT ──────────────────────────────────────────────────
